@@ -1,0 +1,74 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", type: "text/javascript", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="text/javascript">
+			   jQuery(function(){
+				
+				jQuery('#camera_wrap_1').camera({
+					thumbnails: true
+				});
+			});
+		  </script>
+ </head>
+	 <body>		
+	 	 <div class="header">
+		  <!--start-image-slider---->
+				<div class="slider">					     
+				 <div class="fluid_container">
+					<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+					   <div data-thumb="assets/thumbnails/slider-1.jpg" data-src="assets/slider-1.jpg">  </div>
+					   <div data-thumb="assets/thumbnails/slider-2.jpg" data-src="assets/slider-2.jpg">  </div>
+					   <div data-thumb="assets/thumbnails/slider-3.jpg" data-src="assets/slider-3.jpg">  </div>
+				       <div data-thumb="assets/thumbnails/slider-4.jpg" data-src="assets/slider-4.jpg">  </div>
+					</div>
+				</div>
+			 <div class="clear"></div>					       
+		 </div>
+    <!--End-image-slider---->
+          <div class="header_bottom">
+          	 <div class="wrap">
+          	  <div class="logo">
+          	  	  <a href="index.html"><img src="assets/logo.png" alt="" /></a>
+          	    </div>
+          	       <div class="menu">
+					    <ul>
+							<li class="active"><%= link_to "Home", root_path %></li>
+							<li><%= link_to "About", about_path %></li>
+							<li><%= link_to "Menu", menu_path %></li>
+							<li><%= link_to "Services", services_path %></li>
+							<li><%= link_to "Contact", contact_path %></li>
+							<div class="clear"></div>
+						</ul>
+					  </div>
+				    <div class="clear"></div>
+				</div>
+		    </div>
+       </div>
+		 <!---start-content---->
+		   <div class="main">
+             <%= yield %>
+	       </div>
+		 <!---End-main---->
+	  <!---Footer---->	
+		  <div class="copy-right">
+			<div class="wrap">
+			 <p class="company_name">Company Name &copy; 2013 All Rights Reseverd</p> <p class="design">Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+			 <div class="clear"></div>
+		</div>	
+   </div> 
+  </body>
+</html>

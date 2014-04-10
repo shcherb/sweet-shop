@@ -1,0 +1,56 @@
+<div class="wrap">
+  <div class="section group">
+    <div class="cont span_2_of_3 services_desc">
+      <h2>OUr Services</h2>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <div class="image group">
+        <div class="grid images_3_of_1">
+          <img src="assets/service1.jpg" alt="" />
+        </div>
+        <div class="grid span_2_of_1">
+          <h3>Lorem Ipsum is simply dummy text </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      </div>
+      <div class="image group">
+        <div class="grid images_3_of_1">
+          <img src="assets/service2.jpg" alt="" />
+        </div>
+        <div class="grid span_2_of_1">
+          <h3>Lorem Ipsum is simply dummy text </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      </div>
+      <div class="read_more" style="text-align:right"><a href="#">View All</a></div>
+    </div>
+    <div class="lsidebar sidebar offers_list">
+      <% if signed_in? %>
+          <h2> Active account: <h2><br>
+          <h3><%= current_user[:email] %></h3>
+          <ul>
+            <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "User's accounts", users_path %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+          </ul>
+      <% else %>
+          <%= render 'form' %>
+    <% end %>
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <div class="archives">
+        <h2>Achivements</h2>
+        <ul>
+          <li>March 2012</li>
+          <li>June 2010</li>
+          <li>May 2008</li>
+          <li>January 2005</li>
+          <li>March 2002</li>
+          <li>September 2002</li>
+          <li>August 2001</li>
+          <li>March 1999</li>
+        </ul>
+      </div>
+    </div>
+  </div>

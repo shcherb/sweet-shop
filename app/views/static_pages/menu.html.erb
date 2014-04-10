@@ -1,0 +1,21 @@
+<div class="wrap">
+  <div class="menu_list">
+    <div class="section group">
+      <% Category.all.each do |category_item| %>
+        <div class="col_1_of_4 span_1_of_4">
+          <h3><%= category_item.name %></h3>
+          <%= image_tag(category_item.image_url) %>
+          <ul>
+            <% Product.where(category: category_item.id).each do |product_item| %>
+              <li>
+                <a href="#"><span class="item_name"><%= product_item.title %></span>
+                <span class="price"><%= number_to_currency(product_item.price, locale: :ukr) %></span>
+                <span class="button">Oder</span></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
