@@ -1,0 +1,38 @@
+<div class="content_bottom">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col_1_of_3 span_1_of_3">
+        <h3>Our Chefs</h3>
+        <img src="assets/chefs.jpg" alt="" />
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="read_more"><a href="#">Read More</a></div>
+      </div>
+      <div class="col_1_of_3 span_1_of_3">
+        <h3>Special Dishes </h3>
+        <ul class="dishes_list">
+          <% unless @special_dishes.empty? %>
+              <% @special_dishes.each do |dishes| %>
+                  <li><%= link_to dishes.title, product_path(dishes.id) %></li>
+              <% end %>
+          <% end %>
+          <div class="clear"> </div>
+        </ul>
+      </div>
+      <div class="col_1_of_3 span_1_of_3">
+        <div class="location">
+          <h3>Location</h3>
+          <ul>
+            <li>1-22-003-55,</li>
+            <li>Neque porro quisquam,</li>
+            <li>dolor sit amet,</li>
+            <li>USA.</li>
+            <li>info(at)yourcompany.com</li>
+            <li><span>Mobile :</span> +12 345 67890</li>
+            <li><span>Telephone :</span> +00 000 00000</li>
+            <li><span>Fax :</span> +00 000 00000</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

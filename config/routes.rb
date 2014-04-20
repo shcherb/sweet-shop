@@ -5,22 +5,15 @@ SweetShop::Application.routes.draw do
   get 'index' => 'home#index'
   get 'services' => 'static_pages#services'
   get 'carts/:id/confirm' => 'carts#confirm', as: :confirm
-  get "static_pages/home"
-#  get "static_pages/about"
-#  get "static_pages/menu"
-#  get "static_pages/services"
-#  get "static_pages/contact"
-  get "home/index"
+  get 'about' => 'home#about'
+  get 'contact' => 'home#contact'
 
-  match '/about', to: 'static_pages#about', via: :get
   match '/menu', to: 'static_pages#menu', via: :get
   match '/services', to: 'static_pages#services', via: :get
   match '/contact', to: 'static_pages#contact', via: :get
   match '/signup',  to: 'users#new', via: :get
   match '/signin',  to: 'sessions#new', via: :get
   match '/signout', to: 'sessions#destroy', via: :delete
-#  match '/confirm', to: 'carts#confirm', via: :get
-
 
   resources :carts
 
