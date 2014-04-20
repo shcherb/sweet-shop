@@ -488,6 +488,10 @@ ul.dishes_list li a:hover{
 	float:right;
 }
 
+.menu_list li span.button_to{
+    display: inline;
+}
+
 /****** Services **********/
 .services_desc h2{
 	color:#8F8042;

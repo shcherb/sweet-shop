@@ -1,0 +1,42 @@
+<% unless @orders.all.empty? %>
+<h1>Listing items of order</h1>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Наименование</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th><%= "Вес" if @order.products.first.by_weight %></th>
+        <th>Стоимость</th>
+        <th><%= "Стоимость со скидкой" if @cart.user_id && (@cart.user_id.discount_rate > 0) %></th>
+        <th>Примечание</th>
+        <th>Рисунок</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.products.first.title %></td>
+          <td><%= order.products.first.price %></td>
+          <td><%= order.count %></div>
+          </td>
+          <td><% order.weight if order.products.first.by_weight %></td>
+          <td><%= order.sum %></td>
+          <td><%= order.discount_sum if @cart.user_id && (@cart.user_id.discount_rate > 0) %></td>
+          <td><%= order.note %></td>
+          <td><%= image_tag(order.image_url) if order.image_url %></td>
+          <td><%= button_to 'Edit', edit_order_path(order), method: "get" %></td>
+          <td><%= button_to 'Delete', order_path(order.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "button_to" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+  <%= button_to 'Empty cart', cart_path(@order.cart_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+  <%= link_to "Back to menu", menu_path, class: "button" %>
+<% end %>

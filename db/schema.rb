@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401203229) do
+ActiveRecord::Schema.define(version: 20140420124448) do
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "payed"
+    t.boolean  "done"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -21,26 +29,34 @@ ActiveRecord::Schema.define(version: 20140401203229) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
     t.integer  "count"
     t.decimal  "sum"
     t.decimal  "discount_sum"
-    t.boolean  "payed"
-    t.boolean  "done"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cart_id"
+    t.integer  "weight",       default: 0
+    t.text     "note"
+    t.string   "image_url"
   end
+
+  create_table "orders_products", id: false, force: true do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+  end
+
+  add_index "orders_products", ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
 
   create_table "products", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "category"
     t.string   "image_url"
     t.decimal  "price",         precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "today_special"
+    t.integer  "today_special",                         default: 0
+    t.integer  "by_weight",                             default: 0
+    t.integer  "category_id"
   end
 
   create_table "users", force: true do |t|

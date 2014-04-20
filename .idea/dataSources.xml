@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2998507740">
+    <data-source source="LOCAL" name="Rails sweet-shop: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="eaebdaf6-8d4e-422e-a8bf-f310392e1fe3">
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/sweet-shop_development</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails sweet-shop: test" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="ac644e5f-9a3b-4a09-a717-cc770470adc2">
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/sweet-shop_test</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

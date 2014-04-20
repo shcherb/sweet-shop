@@ -1,16 +1,15 @@
 SweetShop::Application.routes.draw do
-  resources :carts
 
-  root "static_pages#home"
+  root "home#index"
 
-  get 'index' => 'static_pages#home'
+  get 'index' => 'home#index'
   get 'services' => 'static_pages#services'
   get "static_pages/home"
 #  get "static_pages/about"
 #  get "static_pages/menu"
 #  get "static_pages/services"
 #  get "static_pages/contact"
-  get "store/index"
+  get "home/index"
 
   match '/about', to: 'static_pages#about', via: :get
   match '/menu', to: 'static_pages#menu', via: :get
@@ -21,6 +20,7 @@ SweetShop::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
 
+  resources :carts
 
   resources :products
 

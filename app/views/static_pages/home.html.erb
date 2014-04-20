@@ -1,3 +1,4 @@
+<% init_products %>
 <% provide(:title, 'Home') %>
 
 <div class="wrap">
@@ -5,6 +6,7 @@
     <div class="section group">
       <div class="col_1_of_2 span_1_of_2">
         <h3>Welcome to Hotel <br> <span>Delicious</span></h3>
+        <p><%= @products.first.title %></p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         <a href="#" class="button">Read More</a>

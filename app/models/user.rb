@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders, dependent: :destroy
+  belongs_to  :cart, dependent: :destroy
 
   has_secure_password
 

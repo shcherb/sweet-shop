@@ -6,11 +6,13 @@
           <h3><%= category_item.name %></h3>
           <%= image_tag(category_item.image_url) %>
           <ul>
-            <% Product.where(category: category_item.id).each do |product_item| %>
+            <% Product.where(category_id: category_item.id).each do |product_item| %>
               <li>
-                <a href="#"><span class="item_name"><%= product_item.title %></span>
-                <span class="price"><%= number_to_currency(product_item.price, locale: :ukr) %></span>
-                <span class="button">Oder</span></a>
+                <a href="#">
+                  <span class="item_name"><%= product_item.title %></span>
+                  <span class="price"><%= number_to_currency(product_item.price, locale: :ukr) %></span>
+                </a>
+                <%= button_to 'Add to cart', orders_path(product_id: product_item.id), action: "create", class: "button_to" %>
               </li>
             <% end %>
           </ul>

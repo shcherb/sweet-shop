@@ -11,18 +11,24 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @product.price %>
+</p>
+
+<% if @product.by_weight > 0 %>
+  <p>
+    <strong>Warning! Price by weight:</strong>
+    <%= @product.by_weight %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <%= image_tag(@product.image_url) %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

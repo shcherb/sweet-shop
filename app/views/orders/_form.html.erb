@@ -1,4 +1,5 @@
 <%= form_for(@order) do |f| %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -11,35 +12,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :count %><br>
-    <%= f.number_field :count %>
-  </div>
-  <div class="field">
-    <%= f.label :sum %><br>
-    <%= f.text_field :sum %>
-  </div>
-  <div class="field">
-    <%= f.label :discount_sum %><br>
-    <%= f.text_field :discount_sum %>
-  </div>
-  <div class="field">
-    <%= f.label :payed %><br>
-    <%= f.check_box :payed %>
-  </div>
-  <div class="field">
-    <%= f.label :done %><br>
-    <%= f.check_box :done %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Наименование</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th><%= "Вес" if @order.products.first.by_weight %></th>
+        <th>Примечание</th>
+        <th>Рисунок</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @order.products.first.title %></td>
+        <td><%= @order.products.first.price %></td>
+        <td>
+          <div class="field">
+            <%= f.number_field :count, size: 4 %>
+          </div>
+        </td>
+        <td>
+          <% if @order.products.first.by_weight %>
+            <div class="field">
+              <%= f.number_field :weight, size: 6 %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.text_area :note, rows: 4 %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= image_tag(@order.image_url) if @order.image_url %>
+            <%= f.file_field :image_url %>
+          </div>
+        </td>
+        <td>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
+
+<%= button_to 'Delete', order_path(@order.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "button_to"  %>

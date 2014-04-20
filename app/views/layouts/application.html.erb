@@ -51,6 +51,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><%= link_to "Menu", menu_path %></li>
 							<li><%= link_to "Services", services_path %></li>
 							<li><%= link_to "Contact", contact_path %></li>
+                            <% if session[:cart_id] %>
+                              <li><%= link_to "Cart", orders_path %></li>
+                            <% end %>
 							<div class="clear"></div>
 						</ul>
 					  </div>

@@ -1,39 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @order.product_id %>
-</p>
-
-<p>
-  <strong>Count:</strong>
-  <%= @order.count %>
-</p>
-
-<p>
-  <strong>Sum:</strong>
-  <%= @order.sum %>
-</p>
-
-<p>
-  <strong>Discount sum:</strong>
-  <%= @order.discount_sum %>
-</p>
-
-<p>
-  <strong>Payed:</strong>
-  <%= @order.payed %>
-</p>
-
-<p>
-  <strong>Done:</strong>
-  <%= @order.done %>
-</p>
+<div id="cart">
+  <%= render 'form' %>
+  <%= render 'index' %>
+</div>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

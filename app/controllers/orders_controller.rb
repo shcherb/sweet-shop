@@ -4,7 +4,9 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @cart = current_cart
+    @orders = Order.where(cart_id: @cart.id)
+    @order=@orders.first
   end
 
   # GET /orders/1
@@ -24,7 +26,9 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @cart = current_cart
+    @product = Product.find(params[:product_id])
+    @order = Order.add_product(@product, @cart)
 
     respond_to do |format|
       if @order.save
@@ -42,7 +46,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to orders_path, notice: 'Add new item in your cart:' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -55,20 +59,31 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
+    if Order.all.empty?
+      @cart = current_cart
+      @cart.destroy
+      respond_to do |format|
+        format.html { redirect_to menu_path, notice: 'Cart is empty!' }
+        format.json { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to orders_url }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
+      @cart = current_cart
       @order = Order.find(params[:id])
+      @orders = Order.where("cart_id=? AND id<>?", @cart.id, params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :product_id, :count, :sum, :discount_sum, :payed, :done)
+      params.require(:order).permit(:count, :sum, :discount_sum, :weight, :note, :image_url)
     end
 end
