@@ -1,0 +1,13 @@
+  <% if signed_in? %>
+      <h2> Active account: <h2><br>
+        <h3><%= current_user[:email] %></h3>
+        <ul>
+          <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+          <li><%= link_to "User's accounts", users_path %></li>
+          <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        </ul>
+  <% else %>
+  <% end %>
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>

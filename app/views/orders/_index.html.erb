@@ -37,6 +37,13 @@
 
 
   <%= button_to 'Empty cart', cart_path(@order.cart_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if signed_in? %>
+      <%= button_to 'Confirm order', confirm_path(@order.cart_id), method: "get" %>
+  <% else %>
+    <%= button_to 'Confirm order', new_user_path, method: "get" %>
+  <% end %>
+
   <br>
   <%= link_to "Back to menu", menu_path, class: "button" %>
+
 <% end %>

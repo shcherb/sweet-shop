@@ -1,0 +1,7 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Congratulate, your order #<%= @cart.id %> was accepted! Our employer will call you.</h1>
+
+<%= link_to 'Back', menu_path %>

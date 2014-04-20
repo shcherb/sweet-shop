@@ -1,2 +1,13 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, "Sign in") %>
+
+<h1>Contact information:</h1>
+<h2><%= link_to "I`m a new user.", new_user_path, class: "button" %>   I`m a regular customer.</h21>
+
+<div class="postitem">
+  <div class="form">
+    <%= render 'form' %>
+  </div>
+</div>
+<div class="postbottom">
+  <%= link_to 'Back', "#" %>
+</div>

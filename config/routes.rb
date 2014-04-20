@@ -4,6 +4,7 @@ SweetShop::Application.routes.draw do
 
   get 'index' => 'home#index'
   get 'services' => 'static_pages#services'
+  get 'carts/:id/confirm' => 'carts#confirm', as: :confirm
   get "static_pages/home"
 #  get "static_pages/about"
 #  get "static_pages/menu"
@@ -15,9 +16,10 @@ SweetShop::Application.routes.draw do
   match '/menu', to: 'static_pages#menu', via: :get
   match '/services', to: 'static_pages#services', via: :get
   match '/contact', to: 'static_pages#contact', via: :get
-#  match '/signup',  to: 'users#new', via: :get
-#  match '/signin',  to: 'sessions#new', via: :get
+  match '/signup',  to: 'users#new', via: :get
+  match '/signin',  to: 'sessions#new', via: :get
   match '/signout', to: 'sessions#destroy', via: :delete
+#  match '/confirm', to: 'carts#confirm', via: :get
 
 
   resources :carts
@@ -30,7 +32,7 @@ SweetShop::Application.routes.draw do
 
   resources :users
 
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

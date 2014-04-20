@@ -1,10 +1,16 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:confirm, :show, :edit, :update, :destroy]
 
   # GET /carts
   # GET /carts.json
   def index
     @carts = Cart.all
+  end
+
+  def confirm
+    @cart.done = true
+    session[:cart_id] = nil
+    OrderNotifier.commited.deliver
   end
 
   # GET /carts/1
